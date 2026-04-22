@@ -117,7 +117,7 @@ const SellerLayout = ({ children }) => {
             {/* Main content */}
             <div className="flex-1 flex flex-col min-w-0">
                 {/* Top bar */}
-                <header className="sticky top-0 z-[70] isolate flex items-center justify-between border-b border-emerald-100 bg-white px-4 py-3 shadow-sm sm:px-6 sm:py-4 lg:hidden">
+                <header className="fixed left-0 right-0 top-0 z-[70] isolate flex items-center justify-between border-b border-emerald-100 bg-white px-4 py-3 shadow-sm sm:px-6 sm:py-4 lg:hidden">
                     <button
                         onClick={() => setSidebarOpen(!sidebarOpen)}
                         className="text-gray-600 hover:text-emerald-700"
@@ -131,7 +131,7 @@ const SellerLayout = ({ children }) => {
                     <div className="w-6" />
                 </header>
 
-                <main className="flex-1 overflow-auto px-3 py-4 sm:p-6 lg:p-8">
+                <main className="flex-1 overflow-auto px-3 pb-4 pt-[76px] sm:px-6 sm:pb-6 sm:pt-[88px] lg:p-8">
                     {children}
                 </main>
             </div>

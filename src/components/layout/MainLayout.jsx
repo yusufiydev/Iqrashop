@@ -43,7 +43,7 @@ const MainLayout = () => {
                     onMenuToggle={() => setIsSidebarOpen((prev) => !prev)}
                 />
 
-                <main className="px-3 pb-8 pt-4 sm:px-5 sm:pt-6 lg:px-8">
+                <main className="px-3 pb-8 pt-[96px] sm:px-5 lg:px-8">
                     <div className="w-full animate-fade-in">
                         <Outlet />
                     </div>

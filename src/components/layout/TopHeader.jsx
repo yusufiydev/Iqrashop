@@ -106,7 +106,7 @@ const TopHeader = ({ onMenuToggle, isSidebarOpen = false }) => {
     const selectedLanguageLabel = t(`languageNames.${language}`);
 
     return (
-        <header className={`sticky top-0 z-[70] isolate shadow-sm ${isDark ? 'bg-[#111d38]' : 'bg-white'}`}>
+        <header className={`fixed left-0 right-0 top-0 z-[70] isolate shadow-sm lg:left-[312px] ${isDark ? 'bg-[#111d38]' : 'bg-white'}`}>
             <div className={`flex h-[80px] items-center gap-3 px-3 sm:gap-4 sm:px-5 ${isDark ? 'border-b border-[#253154]' : 'border-b border-[#dce2ef]'}`}>
                 <div className="flex flex-1 items-center gap-2 sm:gap-3">
                     {onMenuToggle ? (

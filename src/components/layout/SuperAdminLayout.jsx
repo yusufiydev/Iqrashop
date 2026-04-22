@@ -13,7 +13,7 @@ const SuperAdminLayout = () => {
 
     return (
         <div className="min-h-screen bg-linear-to-br from-emerald-50 via-white to-cyan-50">
-            <header className="sticky top-0 z-[70] isolate border-b border-emerald-100 bg-white shadow-sm">
+            <header className="fixed left-0 right-0 top-0 z-[70] isolate border-b border-emerald-100 bg-white shadow-sm">
                 <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-4">
                     <div className="flex min-w-0 items-center gap-3">
                         <div className="rounded-xl bg-emerald-600 p-2 text-white">
@@ -39,7 +39,7 @@ const SuperAdminLayout = () => {
                 </div>
             </header>
 
-            <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-3 py-4 sm:px-6 sm:py-6">
+            <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-3 pb-4 pt-[124px] sm:px-6 sm:pb-6 sm:pt-[92px]">
                 <nav className="flex overflow-x-auto rounded-2xl border border-emerald-100 bg-white p-2">
                     <NavLink
                         to="/admin"
