@@ -41,10 +41,10 @@ const SellerDashboard = () => {
     const formatPrice = (p) => `${new Intl.NumberFormat('uz-UZ').format(p)} ${t('common.sum') || 'so\'m'}`;
 
     return (
-        <div>
+        <div className="min-w-0">
             {/* Header */}
-            <div className="mb-6 sm:mb-8">
-                <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">{t('seller.dashboard') || 'Dashboard'}</h1>
+            <div className="mb-6 min-w-0 sm:mb-8">
+                <h1 className="break-words text-xl font-bold text-gray-900 sm:text-2xl">{t('seller.dashboard') || 'Dashboard'}</h1>
                 <p className="mt-1 text-sm text-gray-500">{t('seller.welcomeText') || 'Manage your bookstore and track sales'}</p>
             </div>
 
@@ -131,20 +131,24 @@ const SellerDashboard = () => {
                     </div>
                     <div className="divide-y divide-emerald-50">
                         {books.slice(0, 5).map((book) => (
-                            <div key={book.id} className="flex items-center gap-4 px-5 py-4 hover:bg-emerald-50 transition-colors">
-                                <img src={book.image} alt={book.title} className="h-16 w-12 rounded object-cover" />
+                            <div key={book.id} className="flex flex-col gap-3 px-4 py-4 transition-colors hover:bg-emerald-50 sm:flex-row sm:items-center sm:gap-4 sm:px-5">
+                                <div className="flex min-w-0 items-center gap-3 sm:flex-1 sm:gap-4">
+                                <img src={book.image} alt={book.title} className="h-16 w-12 shrink-0 rounded object-cover" />
                                 <div className="min-w-0 flex-1">
                                     <p className="truncate font-medium text-gray-900">{book.title}</p>
                                     <p className="text-sm text-gray-500">{book.author}</p>
                                 </div>
-                                <p className="text-sm font-semibold text-emerald-700">
-                                    {new Intl.NumberFormat('uz-UZ').format(book.price)} so'm
-                                </p>
-                                {book.isBestSeller && (
-                                    <span className="inline-flex items-center rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">
-                                        ⭐ {t('seller.bestSeller') || 'Best Seller'}
-                                    </span>
-                                )}
+                                </div>
+                                <div className="flex flex-wrap items-center gap-2 pl-15 sm:justify-end sm:pl-0">
+                                    <p className="text-sm font-semibold text-emerald-700">
+                                        {new Intl.NumberFormat('uz-UZ').format(book.price)} so'm
+                                    </p>
+                                    {book.isBestSeller && (
+                                        <span className="inline-flex items-center rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">
+                                            ⭐ {t('seller.bestSeller') || 'Best Seller'}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
                         ))}
                     </div>

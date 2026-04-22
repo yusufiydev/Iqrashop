@@ -46,8 +46,8 @@ const SuperAdminDashboard = () => {
     };
 
     return (
-        <div className="space-y-6">
-            <section className="grid gap-4 sm:grid-cols-3">
+        <div className="min-w-0 space-y-5 sm:space-y-6">
+            <section className="grid gap-3 sm:grid-cols-3 sm:gap-4">
                 <div className="rounded-2xl border border-emerald-100 bg-white p-5">
                     <p className="text-sm text-gray-500">Sotuvchilar</p>
                     <p className="mt-1 text-3xl font-bold text-emerald-700">{sellers.length}</p>
@@ -68,15 +68,15 @@ const SuperAdminDashboard = () => {
                 </div>
                 <div className="divide-y divide-emerald-50">
                     {sellers.map((seller) => (
-                        <div key={seller.id} className="flex items-center justify-between gap-3 px-5 py-4">
-                            <div>
-                                <p className="font-medium text-gray-900">{seller.name}</p>
-                                <p className="text-sm text-gray-500">{seller.email}</p>
+                        <div key={seller.id} className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+                            <div className="min-w-0">
+                                <p className="truncate font-medium text-gray-900">{seller.name}</p>
+                                <p className="truncate text-sm text-gray-500">{seller.email}</p>
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="grid gap-2 min-[420px]:grid-cols-2 sm:flex sm:items-center">
                                 <Link
                                     to={`/admin/sellers/${seller.id}`}
-                                    className="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700"
+                                    className="rounded-xl bg-emerald-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-emerald-700"
                                 >
                                     Profilga o‘tish
                                 </Link>
@@ -99,15 +99,15 @@ const SuperAdminDashboard = () => {
                 </div>
                 <div className="divide-y divide-cyan-50">
                     {buyers.map((buyer) => (
-                        <div key={buyer.id} className="flex items-center justify-between gap-3 px-5 py-4">
-                            <div>
-                                <p className="font-medium text-gray-900">{buyer.name}</p>
-                                <p className="text-sm text-gray-500">{buyer.email}</p>
+                        <div key={buyer.id} className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+                            <div className="min-w-0">
+                                <p className="truncate font-medium text-gray-900">{buyer.name}</p>
+                                <p className="truncate text-sm text-gray-500">{buyer.email}</p>
                             </div>
                             <button
                                 type="button"
                                 onClick={() => handleDeleteBuyer(buyer.id)}
-                                className="rounded-xl border border-red-200 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
+                                className="rounded-xl border border-red-200 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 sm:w-auto"
                             >
                                 O‘chirish
                             </button>

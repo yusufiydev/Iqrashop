@@ -30,11 +30,11 @@ const SellerProfile = () => {
     }
 
     return (
-        <div className="space-y-5">
+        <div className="min-w-0 space-y-5">
             <div className="rounded-2xl border border-emerald-100 bg-white p-5">
                 <p className="text-sm text-gray-500">Sotuvchi</p>
-                <h1 className="text-2xl font-bold text-gray-900">{seller.name}</h1>
-                <p className="text-gray-500">{seller.email}</p>
+                <h1 className="break-words text-xl font-bold text-gray-900 sm:text-2xl">{seller.name}</h1>
+                <p className="break-words text-gray-500">{seller.email}</p>
                 <Link to="/admin" className="mt-4 inline-block text-sm font-medium text-emerald-700 hover:text-emerald-800">
                     Orqaga
                 </Link>
@@ -46,12 +46,15 @@ const SellerProfile = () => {
                 </div>
                 <div className="divide-y divide-emerald-50">
                     {books.map((book) => (
-                        <div key={book.id} className="flex items-center gap-4 px-5 py-4">
-                            <img src={book.image} alt={book.title} className="h-16 w-12 rounded object-cover" />
+                        <div key={book.id} className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:gap-4 sm:px-5">
+                            <div className="flex min-w-0 items-center gap-3 sm:flex-1 sm:gap-4">
+                            <img src={book.image} alt={book.title} className="h-16 w-12 shrink-0 rounded object-cover" />
                             <div className="min-w-0 flex-1">
                                 <p className="truncate font-medium text-gray-900">{book.title}</p>
-                                <p className="text-sm text-gray-500">{book.author}</p>
+                                <p className="truncate text-sm text-gray-500">{book.author}</p>
                             </div>
+                            </div>
+                            <div className="flex flex-wrap items-center gap-2 pl-15 sm:justify-end sm:pl-0">
                             <p className="text-sm font-semibold text-emerald-700">
                                 {new Intl.NumberFormat('uz-UZ').format(book.price)} so'm
                             </p>
@@ -62,6 +65,7 @@ const SellerProfile = () => {
                             >
                                 O‘chirish
                             </button>
+                            </div>
                         </div>
                     ))}
                     {books.length === 0 ? (

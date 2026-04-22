@@ -7,9 +7,9 @@ import {
 import { useAppSettings } from '../../context/AppSettingsContext';
 
 const SellerSidebar = ({ navItems, onNavigate, onLogout, t, user }) => (
-    <aside className="flex min-h-screen w-[280px] shrink-0 flex-col border-r border-emerald-100 bg-white text-gray-900 sm:w-64">
+    <aside className="flex min-h-screen w-[min(82vw,280px)] shrink-0 flex-col border-r border-emerald-100 bg-white text-gray-900 sm:w-64">
         {/* Logo */}
-        <div className="flex items-center gap-3 border-b border-emerald-100 px-6 py-5">
+        <div className="flex items-center gap-3 border-b border-emerald-100 px-5 py-5 sm:px-6">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600">
                 <Store className="w-5 h-5 text-white" />
             </div>
@@ -20,7 +20,7 @@ const SellerSidebar = ({ navItems, onNavigate, onLogout, t, user }) => (
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 px-4 py-6 space-y-1">
+        <nav className="flex-1 space-y-1 px-3 py-5 sm:px-4 sm:py-6">
             {navItems.map(({ to, label, icon, end }) => {
                 const IconComponent = icon;
                 return (
@@ -44,7 +44,7 @@ const SellerSidebar = ({ navItems, onNavigate, onLogout, t, user }) => (
         </nav>
 
         {/* User info */}
-        <div className="border-t border-emerald-100 px-4 py-4">
+        <div className="border-t border-emerald-100 px-3 py-4 sm:px-4">
             <div className="flex items-center gap-3 mb-3 px-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-sm font-bold text-white">
                     {user?.name?.[0]?.toUpperCase() || 'S'}
@@ -117,7 +117,7 @@ const SellerLayout = ({ children }) => {
             {/* Main content */}
             <div className="flex-1 flex flex-col min-w-0">
                 {/* Top bar */}
-                <header className="flex items-center justify-between border-b border-emerald-100 bg-white px-4 py-3 sm:px-6 sm:py-4 lg:hidden">
+                <header className="sticky top-0 z-30 flex items-center justify-between border-b border-emerald-100 bg-white/95 px-4 py-3 backdrop-blur sm:px-6 sm:py-4 lg:hidden">
                     <button
                         onClick={() => setSidebarOpen(!sidebarOpen)}
                         className="text-gray-600 hover:text-emerald-700"
@@ -131,7 +131,7 @@ const SellerLayout = ({ children }) => {
                     <div className="w-6" />
                 </header>
 
-                <main className="flex-1 overflow-auto p-4 sm:p-6 lg:p-8">
+                <main className="flex-1 overflow-auto px-3 py-4 sm:p-6 lg:p-8">
                     {children}
                 </main>
             </div>

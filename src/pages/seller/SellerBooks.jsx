@@ -204,7 +204,7 @@ const SellerBooks = () => {
     const formatPrice = (p) => `${new Intl.NumberFormat('uz-UZ').format(p)} ${t('common.sum') || 'so\'m'}`;
 
     return (
-        <div>
+        <div className="min-w-0">
             {/* Modals */}
             {modal?.type === 'add' && (
                 <BookModal onClose={() => setModal(null)} onSave={handleAdd} />
@@ -217,9 +217,9 @@ const SellerBooks = () => {
             )}
 
             {/* Header */}
-            <div className="mb-5 flex flex-col gap-4 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                    <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">{t('seller.myBooks') || 'My Books'}</h1>
+            <div className="mb-5 flex min-w-0 flex-col gap-4 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                    <h1 className="break-words text-xl font-bold text-gray-900 sm:text-2xl">{t('seller.myBooks') || 'My Books'}</h1>
                     <p className="text-gray-600 text-sm mt-1">{t('seller.availableBooks') || `You have ${books.length} books`}</p>
                 </div>
                 <button
@@ -258,7 +258,7 @@ const SellerBooks = () => {
             </div>
 
             {/* Books Grid or Table */}
-            <div className="bg-white rounded-2xl border border-emerald-100 overflow-hidden">
+            <div className="overflow-hidden rounded-2xl border border-emerald-100 bg-white">
                 {loading ? (
                     <div className="py-20 flex flex-col items-center gap-3 text-gray-500">
                         <Loader2 className="w-8 h-8 animate-spin text-emerald-400" />
