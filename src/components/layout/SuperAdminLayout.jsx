@@ -13,7 +13,7 @@ const SuperAdminLayout = () => {
 
     return (
         <div className="min-h-screen bg-linear-to-br from-emerald-50 via-white to-cyan-50">
-            <header className="sticky top-0 z-30 border-b border-emerald-100 bg-white/95 backdrop-blur">
+            <header className="sticky top-0 z-[70] isolate border-b border-emerald-100 bg-white shadow-sm">
                 <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-4">
                     <div className="flex min-w-0 items-center gap-3">
                         <div className="rounded-xl bg-emerald-600 p-2 text-white">
