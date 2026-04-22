@@ -1,5 +1,6 @@
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const BOOK_ASSISTANT_API_URL = import.meta.env.VITE_BOOK_ASSISTANT_API_URL || '/api/book-assistant';
 const DEFAULT_GROQ_MODEL = 'llama-3.3-70b-versatile';
 const DEPRECATED_MODEL_REPLACEMENTS = {
     'llama3-70b-8192': 'llama-3.3-70b-versatile',
@@ -58,12 +59,46 @@ const buildSystemPrompt = (book, reviews, language) => {
 };
 
 export const requestBookAssistantAnswer = async ({ book, reviews = [], question, language = 'uz', history = [] }) => {
-    if (!GROQ_API_KEY) {
-        throw new Error('AI kaliti topilmadi. .env faylida VITE_GROQ_API_KEY ni tekshiring.');
-    }
-
     if (!question?.trim()) {
         throw new Error('Savol bo\'sh bo\'lishi mumkin emas.');
+    }
+
+    const remoteResponse = await fetch(BOOK_ASSISTANT_API_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            book,
+            reviews,
+            question,
+            language,
+            history,
+        }),
+    }).catch(() => null);
+
+    if (remoteResponse?.headers.get('content-type')?.includes('application/json')) {
+        const payload = await remoteResponse.json().catch(() => null);
+
+        if (!remoteResponse.ok) {
+            const errorMessage =
+                payload?.error
+                || payload?.message
+                || 'AI xizmati bilan bog\'lanib bo\'lmadi.';
+            throw new Error(errorMessage);
+        }
+
+        const answer = payload?.answer?.trim();
+
+        if (!answer) {
+            throw new Error('AI dan javob kelmadi.');
+        }
+
+        return { answer };
+    }
+
+    if (!GROQ_API_KEY) {
+        throw new Error('AI kaliti topilmadi. Deploy sozlamalarida GROQ_API_KEY ni tekshiring.');
     }
 
     const messages = [
