@@ -21,6 +21,7 @@ const GROQ_MODEL = resolveModel(import.meta.env.VITE_GROQ_MODEL || DEFAULT_GROQ_
 
 const languageNames = {
     uz: "o'zbek",
+    qq: 'qaraqalpaq',
     en: 'English',
     ru: 'русский',
 };

@@ -17,6 +17,7 @@ const resolveModel = (modelValue) => {
 
 const languageNames = {
     uz: "o'zbek",
+    qq: 'qaraqalpaq',
     en: 'English',
     ru: 'русский',
 };
